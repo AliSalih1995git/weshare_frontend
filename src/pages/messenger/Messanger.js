@@ -1,12 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
-import './style.css';
-import Header from '../../components/header';
-import Conversation from '../../components/conversation/Conversation';
-import Message from '../../components/messege/Message';
-import ChatOnline from '../../components/chatOnline/ChatOnline';
-import axios from 'axios';
-import { io } from 'socket.io-client';
+import React, { useEffect, useRef, useState } from "react";
+import { useSelector } from "react-redux";
+import "./style.css";
+import Header from "../../components/header";
+import Conversation from "../../components/conversation/Conversation";
+import Message from "../../components/messege/Message";
+import ChatOnline from "../../components/chatOnline/ChatOnline";
+import axios from "axios";
+import { io } from "socket.io-client";
 
 export default function Messanger() {
   const { user } = useSelector((state) => ({ ...state }));
@@ -14,7 +14,7 @@ export default function Messanger() {
   const [conversations, setConversations] = useState([]);
   const [currentChat, setCurrentChat] = useState(null);
   const [messages, setMessages] = useState([]);
-  const [newMessage, setNewMessage] = useState('');
+  const [newMessage, setNewMessage] = useState("");
   const [arrivalMessage, setArrivalMessage] = useState(null);
   const [onlineUsers, setOnlineUsers] = useState([]);
   const socket = useRef();
@@ -22,8 +22,7 @@ export default function Messanger() {
   const scrollRef = useRef();
 
   useEffect(() => {
-
-    socket.current = io("https://weshareserver.bookcart.world/socket");
+    socket.current = io("ws://wesharesocket.bookcart.world");
     socket.current.on("getMessage", (data) => {
       setArrivalMessage({
         sender: data.senderId,
@@ -40,15 +39,15 @@ export default function Messanger() {
   }, [arrivalMessage, currentChat]);
 
   useEffect(() => {
-    socket.current.emit('addUser', user.id);
-    socket.current.on('getUsers', (users) => {
-      console.log(users, 'USERS');
+    socket.current.emit("addUser", user.id);
+    socket.current.on("getUsers", (users) => {
+      console.log(users, "USERS");
       setOnlineUsers(
         user.followings.filter((f) => users?.some((u) => u.userId === f))
       );
     });
   }, [user]);
-  console.log(onlineUsers, 'onlineUsersss');
+  console.log(onlineUsers, "onlineUsersss");
 
   useEffect(() => {
     const getConversations = async () => {
@@ -98,7 +97,7 @@ export default function Messanger() {
 
     const receiverId = currentChat.members.find((member) => member !== user.id);
 
-    socket.current.emit('sendMessage', {
+    socket.current.emit("sendMessage", {
       senderId: user.id,
       receiverId,
       text: newMessage,
@@ -115,13 +114,13 @@ export default function Messanger() {
         }
       );
       setMessages([...messages, res.data]);
-      setNewMessage('');
+      setNewMessage("");
     } catch (err) {
       console.log(err);
     }
   };
   useEffect(() => {
-    scrollRef.current?.scrollIntoView({ behavior: 'smooth' });
+    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
   return (
