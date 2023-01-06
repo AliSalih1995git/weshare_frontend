@@ -22,7 +22,7 @@ export default function Messanger() {
   const scrollRef = useRef();
 
   useEffect(() => {
-    socket.current = io("ws://wesharesocket.bookcart.world");
+    socket.current = io("ws://weshareserver.bookcart.world/socket");
     socket.current.on("getMessage", (data) => {
       setArrivalMessage({
         sender: data.senderId,
