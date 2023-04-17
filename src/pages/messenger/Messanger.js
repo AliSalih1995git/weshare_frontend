@@ -129,12 +129,12 @@ export default function Messanger() {
       <div className="messenger">
         <div className="chatMenu">
           <div className="chatMenuWrapper">
-            <div className="search">
+            {/* <div className="search">
               <input
                 placeholder="Search for friends"
                 className="chatMenuInput"
               />
-            </div>
+            </div> */}
             {conversations.map((c, i) => (
               <div onClick={() => setCurrentChat(c)} key={i}>
                 <Conversation conversation={c} />

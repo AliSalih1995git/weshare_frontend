@@ -139,7 +139,7 @@ header {
   align-items: center;
   justify-content: center;
   margin-right: 8px;
-  background: var(--bg-third);
+  background: #c48d26;
   cursor: pointer;
 }
 .right_notification {

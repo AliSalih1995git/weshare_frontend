@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 function Logo() {
   return (
@@ -13,7 +13,7 @@ function Logo() {
       enableBackground="new 0 0 512 512"
     >
       <path
-        fill="#FFFFFF"
+        fill="#cea962"
         opacity="1.000000"
         stroke="none"
         d="
@@ -92,7 +92,7 @@ function Logo() {
    z"
       />
       <path
-        fill="#FFFFFF"
+        fill="#cea962"
         opacity="1.000000"
         stroke="none"
         d="
@@ -109,7 +109,7 @@ function Logo() {
    z"
       />
       <path
-        fill="#FFFFFF"
+        fill="#cea962"
         opacity="1.000000"
         stroke="none"
         d="

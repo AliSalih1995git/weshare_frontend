@@ -6,7 +6,7 @@
 
 .chatMenu {
   flex: 3.5;
-  background-color: #d7eadd;
+  background-color: #d5be89;
 }
 
 /* .chatMenuInput {
@@ -19,7 +19,8 @@
 .chatBox {
   flex: 5.5;
   height: 100%;
-  background-color: rgba(251, 246, 246, 0.308);
+  background-color: #d5be89;
+  border: 2px solid #cea962;
 }
 
 .chatBoxWrapper {
@@ -40,7 +41,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #d7eadd;
+  background-color: #cea962;
 }
 .search {
   display: flex;
@@ -78,13 +79,13 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  background-color: teal;
+  background-color: #ffa600;
   color: white;
 }
 
 .chatOnline {
   flex: 3;
-  background: #e7eee8;
+  background: #d5be89;
 }
 
 .chatMenuWrapper,
@@ -98,7 +99,7 @@
   position: absolute;
   top: 10%;
   font-size: 50px;
-  color: rgb(224, 220, 220);
+  color: rgb(78, 74, 69);
   cursor: default;
 }
 
