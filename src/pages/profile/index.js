@@ -160,7 +160,7 @@ export default function Profile({ getAllPosts }) {
                   photos={photos}
                 />
                 <Friends friends={profile.friends} />
-                <div className="relative_fb_copyright">
+                {/* <div className="relative_fb_copyright">
                   <Link to="/">Privacy </Link>
                   <span>. </span>
                   <Link to="/">Terms </Link>
@@ -175,7 +175,7 @@ export default function Profile({ getAllPosts }) {
                   <Link to="/">More </Link>
                   <span>. </span> <br />
                   Meta © 2022
-                </div>
+                </div> */}
               </div>
               <div className="profile_right">
                 {!visitor && (

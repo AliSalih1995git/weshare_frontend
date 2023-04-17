@@ -1,14 +1,14 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
-import './style.css';
-import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import Cookies from 'js-cookie';
-import SearchAccount from './SearchAccount';
-import SendEmail from './SendEmail';
-import CodeVerification from './CodeVerification';
-import Footer from '../../components/login/Footer';
-import ChangePassword from './ChangePassword';
+import React, { useState } from "react";
+import "./style.css";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import Cookies from "js-cookie";
+import SearchAccount from "./SearchAccount";
+import SendEmail from "./SendEmail";
+import CodeVerification from "./CodeVerification";
+import Footer from "../../components/login/Footer";
+import ChangePassword from "./ChangePassword";
 
 export default function Reset() {
   const { user } = useSelector((state) => ({ ...state }));
@@ -16,19 +16,19 @@ export default function Reset() {
   const navigate = useNavigate();
   const [visible, setVisible] = useState(0);
   const [loading, setLoading] = useState(false);
-  const [email, setEmail] = useState('');
-  const [code, setCode] = useState('');
-  const [password, setPassword] = useState('');
-  const [conf_password, setConf_password] = useState('');
-  const [error, setError] = useState('');
-  const [userInfos, setUserInfos] = useState('');
+  const [email, setEmail] = useState("");
+  const [code, setCode] = useState("");
+  const [password, setPassword] = useState("");
+  const [conf_password, setConf_password] = useState("");
+  const [error, setError] = useState("");
+  const [userInfos, setUserInfos] = useState("");
 
   const logout = () => {
-    Cookies.set('user', '');
+    Cookies.set("user", "");
     dispatch({
-      type: 'LOGOUT',
+      type: "LOGOUT",
     });
-    navigate('/login');
+    navigate("/login");
   };
   return (
     <div className="reset">
@@ -102,7 +102,7 @@ export default function Reset() {
           />
         )}
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
