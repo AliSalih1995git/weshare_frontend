@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 export const updateprofilePicture = async (url, token) => {
   try {
@@ -13,7 +13,7 @@ export const updateprofilePicture = async (url, token) => {
         },
       }
     );
-    return 'ok';
+    return "ok";
   } catch (error) {
     return error.response.data.message;
   }
@@ -31,11 +31,28 @@ export const updateCover = async (url, token) => {
         },
       }
     );
-    return 'ok';
+    return "ok";
   } catch (error) {
     return error.response.data.message;
   }
 };
+
+export const getAllUnknownFriends = async (id, token) => {
+  try {
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_BACKEND_URL}/unknownFriends/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return data;
+  } catch (error) {
+    return error.response.data.message;
+  }
+};
+
 export const addFriend = async (id, token) => {
   try {
     const { data } = await axios.put(
@@ -48,7 +65,7 @@ export const addFriend = async (id, token) => {
         },
       }
     );
-    return 'ok';
+    return "ok";
   } catch (error) {
     return error.response.data.message;
   }
@@ -65,7 +82,7 @@ export const cancelRequest = async (id, token) => {
         },
       }
     );
-    return 'ok';
+    return "ok";
   } catch (error) {
     return error.response.data.message;
   }
@@ -82,7 +99,7 @@ export const follow = async (id, token) => {
         },
       }
     );
-    return 'ok';
+    return "ok";
   } catch (error) {
     return error.response.data.message;
   }
@@ -99,7 +116,7 @@ export const unfollow = async (id, token) => {
         },
       }
     );
-    return 'ok';
+    return "ok";
   } catch (error) {
     return error.response.data.message;
   }
@@ -116,7 +133,7 @@ export const acceptRequest = async (id, token) => {
         },
       }
     );
-    return 'ok';
+    return "ok";
   } catch (error) {
     return error.response.data.message;
   }
@@ -133,7 +150,7 @@ export const unfriend = async (id, token) => {
         },
       }
     );
-    return 'ok';
+    return "ok";
   } catch (error) {
     return error.response.data.message;
   }
@@ -150,7 +167,7 @@ export const deleteRequest = async (id, token) => {
         },
       }
     );
-    return 'ok';
+    return "ok";
   } catch (error) {
     return error.response.data.message;
   }
@@ -237,7 +254,7 @@ export const getFriendsPageInfos = async (token) => {
         },
       }
     );
-    return { status: 'ok', data };
+    return { status: "ok", data };
   } catch (error) {
     return error.response.data.message;
   }
