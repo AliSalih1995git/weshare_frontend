@@ -1,18 +1,18 @@
-import React, { useEffect, useReducer, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { Routes, Route } from 'react-router-dom';
-import { postsReducer } from './api/functions/reducer';
-import Login from './pages/login';
-import Profile from './pages/profile';
-import Home from './pages/home';
-import LoggedInRoutes from './routes/LoggedInRoutes';
-import NotLoggedInRoutes from './routes/NotLoggedInRoutes';
-import Activate from './pages/home/activate';
-import Reset from './pages/reset';
-import CreatePostPopup from './components/createPostPopup';
-import axios from 'axios';
-import Messanger from './pages/messenger/Messanger';
-import Friends from './pages/friends';
+import React, { useEffect, useReducer, useState } from "react";
+import { useSelector } from "react-redux";
+import { Routes, Route } from "react-router-dom";
+import { postsReducer } from "./api/functions/reducer";
+import Login from "./pages/login";
+import Profile from "./pages/profile";
+import Home from "./pages/home";
+import LoggedInRoutes from "./routes/LoggedInRoutes";
+import NotLoggedInRoutes from "./routes/NotLoggedInRoutes";
+import Activate from "./pages/home/activate";
+import Reset from "./pages/reset";
+import CreatePostPopup from "./components/createPostPopup";
+import axios from "axios";
+import Messanger from "./pages/messenger/Messanger";
+import Friends from "./pages/friends";
 
 function App() {
   const [visible, setVisible] = useState(false);
@@ -20,12 +20,13 @@ function App() {
   const [{ loading, posts }, dispatch] = useReducer(postsReducer, {
     loading: false,
     posts: [],
-    error: '',
+    error: "",
   });
   const getAllPosts = async () => {
+    console.log(process.env.REACT_APP_BACKEND_URL, "URL");
     try {
       dispatch({
-        type: 'POSTS_REQUEST',
+        type: "POSTS_REQUEST",
       });
       const { data } = await axios.get(
         `${process.env.REACT_APP_BACKEND_URL}/getAllposts`,
@@ -36,12 +37,12 @@ function App() {
         }
       );
       dispatch({
-        type: 'POSTS_SUCCESS',
+        type: "POSTS_SUCCESS",
         payload: data,
       });
     } catch (error) {
       dispatch({
-        type: 'POSTS_ERROR',
+        type: "POSTS_ERROR",
         payload: error.response.data.message,
       });
     }
@@ -51,7 +52,7 @@ function App() {
   }, [user]);
 
   return (
-    <div className={darkTheme && 'dark'}>
+    <div className={darkTheme && "dark"}>
       {visible && (
         <CreatePostPopup
           user={user}

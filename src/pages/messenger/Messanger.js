@@ -22,7 +22,7 @@ export default function Messanger() {
   const scrollRef = useRef();
 
   useEffect(() => {
-    socket.current = io("ws://weshareserver.bookcart.world/socket");
+    socket.current = io(process.env.REACT_APP_SOCKET_URL);
     socket.current.on("getMessage", (data) => {
       setArrivalMessage({
         sender: data.senderId,
@@ -41,13 +41,11 @@ export default function Messanger() {
   useEffect(() => {
     socket.current.emit("addUser", user.id);
     socket.current.on("getUsers", (users) => {
-      console.log(users, "USERS");
       setOnlineUsers(
-        user.followings.filter((f) => users?.some((u) => u.userId === f))
+        user.following.filter((f) => users?.some((u) => u.userId === f))
       );
     });
   }, [user]);
-  console.log(onlineUsers, "onlineUsersss");
 
   useEffect(() => {
     const getConversations = async () => {

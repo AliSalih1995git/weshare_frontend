@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import './style.css';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import "./style.css";
+import axios from "axios";
 
 export default function ChatOnline({ onlineUsers, currentId, setCurrentChat }) {
-  console.log(onlineUsers, 'onlineUsers');
   const { user } = useSelector((state) => ({ ...state }));
   const [friends, setFriends] = useState([]);
   const [onlineFriends, setOnlineFriends] = useState([]);
+
   useEffect(() => {
     const getFriends = async () => {
       const res = await axios.get(
@@ -24,7 +24,7 @@ export default function ChatOnline({ onlineUsers, currentId, setCurrentChat }) {
   }, [currentId]);
 
   useEffect(() => {
-    setOnlineFriends(friends?.filter((f) => onlineUsers.includes(f._id)));
+    setOnlineFriends(friends.filter((f) => onlineUsers.includes(f._id)));
   }, [friends, onlineUsers]);
 
   const handleClick = async (users) => {
@@ -57,7 +57,7 @@ export default function ChatOnline({ onlineUsers, currentId, setCurrentChat }) {
               src={
                 o?.picture
                   ? o.picture
-                  : 'https://res.cloudinary.com/dpnark7pd/image/upload/v1669349105/Alisalih/profile_picture/loxuab43po1wgonl9lqg.jpg'
+                  : "https://res.cloudinary.com/dpnark7pd/image/upload/v1669349105/Alisalih/profile_picture/loxuab43po1wgonl9lqg.jpg"
               }
               alt=""
             />
